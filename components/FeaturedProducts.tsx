@@ -34,7 +34,7 @@ export default function FeaturedProducts() {
   return (
     <section id="producten" className="px-4 sm:px-6 py-16 sm:py-24 bg-white">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4">Producten in de kijker</h2>
+        <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4 text-[var(--ink)]">Producten in de kijker</h2>
         <p className="text-gray-600 mb-12 sm:mb-16 max-w-xl mx-auto">
           Een greep uit de producten die je vandaag al kan verkopen.
         </p>
@@ -51,7 +51,7 @@ export default function FeaturedProducts() {
                 <Link
                   key={product.id}
                   href={`/producten/${product.id}`}
-                  className="rounded-xl border border-gray-200 p-6 text-left hover:shadow-md transition block"
+                  className="rounded-xl border border-[var(--border)] p-6 text-left hover:shadow-md hover:border-[var(--accent)] transition block"
                 >
                   <div className="h-40 bg-gray-100 rounded-lg mb-4 overflow-hidden flex items-center justify-center text-gray-400 text-sm">
                     {product.image_url ? (
@@ -60,13 +60,13 @@ export default function FeaturedProducts() {
                       "Geen foto"
                     )}
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
+                  <h3 className="font-display text-lg font-semibold mb-2 text-[var(--ink)]">{product.name}</h3>
                   <div className="text-sm text-gray-600 space-y-1">
                     <p>Inkoopprijs: €{product.buy_price}</p>
                     <p>Adviesprijs: €{product.sell_price}</p>
-                    <p className="text-green-600 font-semibold">Winst: €{profit}</p>
+                    <p className="text-[var(--accent-dark)] font-semibold">Winst: €{profit}</p>
                   </div>
-                  <div className="mt-4 text-center bg-black text-white rounded-lg py-2 text-sm font-semibold">
+                  <div className="mt-4 text-center bg-[var(--ink)] text-white rounded-lg py-2 text-sm font-semibold group-hover:bg-[var(--accent)] transition">
                     Bekijk product
                   </div>
                 </Link>

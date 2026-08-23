@@ -16,22 +16,22 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-black text-white">
+    <nav className="bg-[var(--ink)] text-white">
       <div className="flex items-center justify-between gap-3 px-4 sm:px-8 py-4">
-        <a href="/" className="text-xl sm:text-2xl font-bold flex-shrink-0">Bsales</a>
+        <a href="/" className="font-display text-xl sm:text-2xl font-bold flex-shrink-0">Bsales</a>
 
         <div className="hidden md:flex gap-6">
-          <a href="/producten" className="hover:text-gray-300">Producten</a>
-          <a href="/#ranglijst" className="hover:text-gray-300">Ranglijst</a>
+          <a href="/producten" className="hover:text-[var(--gold)] transition">Producten</a>
+          <a href="/#ranglijst" className="hover:text-[var(--gold)] transition">Ranglijst</a>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-4">
           {!checked ? null : isLoggedIn ? (
-            <a href="/dashboard" className="px-3 sm:px-4 py-2 rounded-lg bg-white text-black text-sm sm:text-base font-semibold hover:bg-gray-200 whitespace-nowrap">Dashboard</a>
+            <a href="/dashboard" className="px-3 sm:px-4 py-2 rounded-lg bg-[var(--gold)] text-[var(--ink)] text-sm sm:text-base font-semibold hover:bg-[var(--gold-dark)] transition whitespace-nowrap">Dashboard</a>
           ) : (
             <>
-              <a href="/login" className="px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-800 text-sm sm:text-base whitespace-nowrap">Inloggen</a>
-              <a href="/register" className="px-3 sm:px-4 py-2 rounded-lg bg-white text-black text-sm sm:text-base font-semibold hover:bg-gray-200 whitespace-nowrap">Registreren</a>
+              <a href="/login" className="px-3 sm:px-4 py-2 rounded-lg hover:bg-white/10 transition text-sm sm:text-base whitespace-nowrap">Inloggen</a>
+              <a href="/register" className="px-3 sm:px-4 py-2 rounded-lg bg-[var(--gold)] text-[var(--ink)] text-sm sm:text-base font-semibold hover:bg-[var(--gold-dark)] transition whitespace-nowrap">Registreren</a>
             </>
           )}
 
@@ -43,8 +43,8 @@ export default function Navbar() {
 
       {menuOpen && (
         <div className="md:hidden flex flex-col gap-1 px-4 pb-4">
-          <a href="/producten" className="py-2 hover:text-gray-300">Producten</a>
-          <a href="/#ranglijst" className="py-2 hover:text-gray-300">Ranglijst</a>
+          <a href="/producten" className="py-2 hover:text-[var(--gold)] transition">Producten</a>
+          <a href="/#ranglijst" className="py-2 hover:text-[var(--gold)] transition">Ranglijst</a>
         </div>
       )}
     </nav>

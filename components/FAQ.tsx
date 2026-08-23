@@ -14,19 +14,19 @@ export default function FAQ() {
   return (
     <section className="px-4 sm:px-6 py-16 sm:py-24 bg-white">
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-12 text-center">
+        <h2 className="font-display text-3xl sm:text-4xl font-bold mb-10 sm:mb-12 text-center text-[var(--ink)]">
           Veelgestelde vragen
         </h2>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={faq.question} className="border border-gray-200 rounded-lg overflow-hidden">
+            <div key={faq.question} className="border border-[var(--border)] rounded-lg overflow-hidden">
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex justify-between items-center gap-3 px-4 sm:px-6 py-4 text-left font-medium hover:bg-gray-50 transition"
+                className="w-full flex justify-between items-center gap-3 px-4 sm:px-6 py-4 text-left font-medium text-[var(--ink)] hover:bg-[var(--paper)] transition"
               >
                 <span>{faq.question}</span>
-                <span className="text-xl flex-shrink-0">{openIndex === index ? "−" : "+"}</span>
+                <span className="text-xl flex-shrink-0 text-[var(--accent-dark)]">{openIndex === index ? "−" : "+"}</span>
               </button>
               {openIndex === index && (
                 <div className="px-4 sm:px-6 pb-4 text-gray-600 text-sm">
