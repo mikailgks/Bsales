@@ -5,22 +5,11 @@ export default function Hero() {
         Verkoop producten. Behoud je winst.
       </h1>
       <p className="text-base md:text-xl text-gray-300 max-w-xl mb-10">
-        Bsales geeft jou de kans om geld te verdienen door producten te verkopen.
-        Registreer je gratis en begin vandaag nog.
+        Bsales geeft jou de kans om geld te verdienen door producten te verkopen. Registreer je gratis en begin vandaag nog.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0">
-        
-          href="/register"
-          className="px-8 py-3 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition text-center"
-        >
-          Nu registreren
-        </a>
-        
-          href="#hoe-werkt-het"
-          className="px-8 py-3 rounded-lg border border-white hover:bg-white hover:text-black transition text-center"
-        >
-          Hoe werkt het?
-        </a>
+        <a href="/register" className="px-8 py-3 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition text-center">Nu registreren</a>
+        <a href="#hoe-werkt-het" className="px-8 py-3 rounded-lg border border-white hover:bg-white hover:text-black transition text-center">Hoe werkt het?</a>
       </div>
     </section>
   );
