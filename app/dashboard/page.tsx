@@ -19,9 +19,7 @@ type RecentClaim = {
   status: string;
   claimed_at: string;
   profit: number;
-  products: {
-    name: string;
-  };
+  products: { name: string };
 };
 
 export default function DashboardPage() {
@@ -35,7 +33,6 @@ export default function DashboardPage() {
 
     async function loadData() {
       const { data: userData } = await supabase.auth.getUser();
-
       if (!userData.user) {
         router.push("/login");
         return;
@@ -92,11 +89,13 @@ export default function DashboardPage() {
   const xpIntoLevel = currentXp % 100;
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-12">
+    <main className="min-h-screen bg-gray-50 px-4 sm:px-6 py-8 sm:py-12">
       <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-10">
+        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8 sm:mb-10">
           <div>
-            <h1 className="text-2xl font-bold">Welkom terug, {displayName}!</h1>
+            <h1 className="text-xl sm:text-2xl font-bold break-words">
+              Welkom terug, {displayName}!
+            </h1>
             {!profile?.username && (
               <p className="text-sm text-gray-500 mt-1">
                 Je hebt nog geen gebruikersnaam.{" "}
@@ -109,82 +108,64 @@ export default function DashboardPage() {
           </div>
           <button
             onClick={handleLogout}
-            className="text-sm border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100 transition"
+            className="text-sm border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100 transition self-start sm:self-auto"
           >
             Uitloggen
           </button>
         </div>
 
-        <div className="flex gap-3 mb-10 flex-wrap">
-          <Link
-            href="/producten"
-            className="bg-black text-white rounded-lg px-5 py-2 text-sm font-semibold hover:bg-gray-800 transition"
-          >
+        <div className="flex gap-3 mb-8 sm:mb-10 flex-wrap">
+          <Link href="/producten" className="bg-black text-white rounded-lg px-5 py-2 text-sm font-semibold hover:bg-gray-800 transition">
             Producten bekijken
           </Link>
-          <Link
-            href="/mijn-producten"
-            className="bg-white border border-gray-300 rounded-lg px-5 py-2 text-sm font-semibold hover:bg-gray-100 transition"
-          >
+          <Link href="/mijn-producten" className="bg-white border border-gray-300 rounded-lg px-5 py-2 text-sm font-semibold hover:bg-gray-100 transition">
             Mijn producten
           </Link>
-          <Link
-            href="/account"
-            className="bg-white border border-gray-300 rounded-lg px-5 py-2 text-sm font-semibold hover:bg-gray-100 transition"
-          >
+          <Link href="/account" className="bg-white border border-gray-300 rounded-lg px-5 py-2 text-sm font-semibold hover:bg-gray-100 transition">
             Account instellingen
           </Link>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 mb-6">
+        <div className="bg-white rounded-xl p-5 sm:p-6 shadow-sm border border-gray-100 mb-6">
           <div className="flex justify-between items-center mb-2">
             <span className="font-semibold">Level {currentLevel}</span>
             <span className="text-sm text-gray-500">{xpIntoLevel} / 100 XP</span>
           </div>
           <div className="w-full bg-gray-100 rounded-full h-3">
-            <div
-              className="bg-black h-3 rounded-full transition-all"
-              style={{ width: `${xpIntoLevel}%` }}
-            />
+            <div className="bg-black h-3 rounded-full transition-all" style={{ width: `${xpIntoLevel}%` }} />
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-10">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="grid sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
+          <div className="bg-white rounded-xl p-5 sm:p-6 shadow-sm border border-gray-100">
             <p className="text-sm text-gray-500 mb-1">Totale winst</p>
-            <p className="text-3xl font-bold">€{profile?.total_profit ?? 0}</p>
+            <p className="text-2xl sm:text-3xl font-bold">€{profile?.total_profit ?? 0}</p>
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div className="bg-white rounded-xl p-5 sm:p-6 shadow-sm border border-gray-100">
             <p className="text-sm text-gray-500 mb-1">Totale omzet</p>
-            <p className="text-3xl font-bold">€{profile?.total_revenue ?? 0}</p>
+            <p className="text-2xl sm:text-3xl font-bold">€{profile?.total_revenue ?? 0}</p>
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div className="bg-white rounded-xl p-5 sm:p-6 shadow-sm border border-gray-100">
             <p className="text-sm text-gray-500 mb-1">Aantal verkopen</p>
-            <p className="text-3xl font-bold">{profile?.total_sales ?? 0}</p>
+            <p className="text-2xl sm:text-3xl font-bold">{profile?.total_sales ?? 0}</p>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-xl p-5 sm:p-6 shadow-sm border border-gray-100">
           <h2 className="font-semibold mb-3">Recente activiteiten</h2>
           {recentClaims.length === 0 ? (
             <p className="text-gray-400 text-sm">
-              Je hebt nog geen producten geclaimd. Zodra je begint, zie je hier
-              je activiteit.
+              Je hebt nog geen producten geclaimd. Zodra je begint, zie je hier je activiteit.
             </p>
           ) : (
             <div className="space-y-3">
               {recentClaims.map((claim) => (
-                <div
-                  key={claim.id}
-                  className="flex justify-between items-center text-sm border-b border-gray-100 last:border-none pb-3 last:pb-0"
-                >
-                  <div>
-                    <p className="font-medium">{claim.products?.name}</p>
+                <div key={claim.id} className="flex justify-between items-center gap-3 text-sm border-b border-gray-100 last:border-none pb-3 last:pb-0">
+                  <div className="min-w-0">
+                    <p className="font-medium truncate">{claim.products?.name}</p>
                     <p className="text-gray-500">{statusText(claim.status)}</p>
                   </div>
-                  <span className="text-green-600 font-semibold">
-                    €{claim.profit}
-                  </span>
+                  <span className="text-green-600 font-semibold flex-shrink-0">€{claim.profit}</span>
                 </div>
               ))}
             </div>
